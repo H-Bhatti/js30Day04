@@ -38,27 +38,110 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
+    let fifteen = inventors.filter(element =>{
+      if(element.year>=1500 && element.year<1600){
+        return true;
+      }
+    })
+    console.table(fifteen)
+
+
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+
+    let names = inventors.map((element)=>{
+      // console.log(element.first)
+      return `${element.first} ${element.last}` 
+      
+    })
+    console.table(names)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
-    // Array.prototype.reduce()
-    // 4. How many years did all the inventors live all together?
+    // let ordered = inventors.sort((a,b)=>{
+    //   if (a.year>b.year){
+    //     return 1;
+    //   }else{
+    //     return -1;
+    //   }
+    // })
+
+    let ordered = inventors.sort((a,b)=>a.year>b.year ? 1 : -1)
+
+    console.table(ordered)
+
+    
+   // Array.prototype.reduce()
+   // 4. How many years did all the inventors live all together?
+
+    let totalYears = inventors.reduce((total,years)=>{
+      return total + (years.passed - years.year)
+    },0)
+
+    console.log(totalYears)
+
 
     // 5. Sort the inventors by years lived
 
+    let olderstGuy = inventors.sort((a,b)=>{
+      let firstGuy = a.passed-a.year;
+      let secondGuy = b.passed-b.year;
+      return firstGuy>secondGuy?1:-1;
+    })
+    console.table(olderstGuy)
+
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+    // let category = document.querySelector(".mw-category");
+    // // gets LL THE ELEMENT WITH CLASS
+    //  let list =[...category.querySelectorAll('a')];
+    //  //NOW CONVERTS THE GIVEN NODELIST FROM THE ABOVE LINE INTO A ARRAY
+    //  console.log(list)
+    //  let de = list.map(list=>list.textContent);
+    //  console.log(de);
+    //   de = de.filter(element=>{
+    //   if (element.includes("de")){
+    //     return true;
+    //   }
+    //  })
+    //  console.log(de)
+
+
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
+    let peeps = people.map(element=>{
+      // console.log(element)
+      return element.split(", ")
+    })
+
+     let sorted = peeps.sort((a,b)=>{
+      if (a[0]>b[0]){
+        return 1;
+      }else{
+        return -1;
+      }
+    })
+    console.table(sorted)
+
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    let transportData = data.reduce((obj, element)=>{
+      if(!obj[element]){
+        obj[element]=0;
+      }
+      obj[element]++
+      return obj
+    },{})
+
+    console.table(transportData)
 
   </script>
 </body>

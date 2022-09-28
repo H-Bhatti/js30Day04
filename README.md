@@ -1,3 +1,3 @@
 Hi checkout this on netlify
 
-git remote add origin https://github.com/H-Bhatti/js30Day04.git
+https://63347f0d9de56d15d5dc4b1f--incandescent-froyo-8120f2.netlify.app/
